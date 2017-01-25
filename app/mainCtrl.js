@@ -2,12 +2,13 @@
 'use strict'
  angular.module("MyFirstApp")
   .controller("mainCtrl",function($scope){
-    $scope.name ="";
-    $scope.stringValue = 0;
+    var vm = this;
+    vm.name ="";
+    vm.stringValue = 0;
 
-    $scope.displayStringValue  = function(){
-      var totalStringValue = calculateStringValue($scope.name);
-      $scope.stringValue = totalStringValue;
+    vm.displayStringValue  = function(){
+      var totalStringValue = calculateStringValue(vm.name);
+      vm.stringValue = totalStringValue;
     }
 
     function calculateStringValue(string){
