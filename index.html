@@ -1,18 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="MyFirstApp">
   <head>
     <meta charset="utf-8">
     <title>Hello coursera</title>
-    <style>body {font-size: 1.5em;}
   </head>
-  <body>
+  <body ng-controller="mainCtrl">
       <h1>Low Cohesion and Tight Coupling</h1>
       <div id="nameCalculator">
          <div>
-           Your name : <input type="text" id="name">
+           Your name : <input type="text" ng-model="name"
+                                          ng-keyup="displayStringValue();">
          </div>
-         <div id="output"></div>
+         <div id="output">
+           Value of person's name : {{stringValue}}
+         </div>
       </div>
-      <script src="app.js"></script>
+      <script src="bower_components/angular/angular.min.js"></script>
+      <script src="app/app.js"></script>
+      <script src="app/mainCtrl.js"></script>
   </body>
 </html>
