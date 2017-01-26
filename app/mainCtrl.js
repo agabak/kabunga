@@ -3,28 +3,28 @@
  angular.module("MyFirstApp")
   .controller("mainCtrl",mainCtrl);
 
-mainCtrl.$inject = ['$filter'];
+mainCtrl.$inject = ['$scope'];
 
-  function mainCtrl($filter){
-        var vm = this;
-        vm.name ="";
-        vm.stringValue = 0;
-        vm.displayStringValue  = function(){
-              var totalStringValue = calculateStringValue(vm.name);
-              vm.stringValue = totalStringValue;
+  function mainCtrl($scope){
+        $scope.name ="";
+        $scope.stringValue = "";
+        $scope.displayStringValue  = function(){
+        if ($scope.name === undefined || $scope.name === "") {
+             $scope.stringValue  = "Empty";
+        }else{
+          var totalStringValue = calculateArrayCount($scope.name);
+           if(totalStringValue <=3){
+             $scope.stringValue  = "Enjoy!";
+           }else {
+             $scope.stringValue  = "Too Much!";
+           }
         }
-        vm.upper = function(){
-          var upperCase = $filter('uppercase');
-          vm.name = upperCase(vm.name);
-        }
-        function calculateStringValue(string){
-             var stringValue = 0;
-              for (var i = 0; i < string.length; i++) {
-                    stringValue += string.charCodeAt(i);
-              }
-              return stringValue;
+    }
+        function calculateArrayCount(string){
+             var  array = string.split(',')
+              return array.length;
         }
   }
 })();
 
-  //use vm instead of $scope
+ //I   used  bower to download angular and bootstrap
